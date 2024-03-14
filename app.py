@@ -47,8 +47,19 @@ def fetch_flight_data(
 app = dash.Dash(__name__)
 
 
+default_map_children = [
+    dl.TileLayer()
+]
+
+
 app.layout = html.Div([
-    dl.Map(id='map', style={'width': '100%', 'height': '500px'}),
+    dl.Map(
+        id='map',
+        center=[56, 10],
+        zoom=6,
+        style={'width': '100%', 'height': '800px'},
+        children=default_map_children
+    ),
     dcc.Interval(
         id="interval-component",
         interval=2*1000,  # in milliseconds
@@ -66,7 +77,7 @@ def update_graph_live(n):
 
     # Assuming data is a list of dict with 'latitude', 'longitude' and 'flight' keys
     # You may need to adjust this based on your actual data structure
-    children = [
+    children = default_map_children + [
         dl.Marker(position=[flight['latitude'], flight['longitude']], children=[
             dl.Popup(html.Div([
                 html.H3(flight['id'])
