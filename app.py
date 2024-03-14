@@ -3,7 +3,7 @@ import dash
 from dash import dcc
 from dash import html
 import dash_leaflet as dl
-from dash.dependencies import Output, Input
+from dash.dependencies import Output, Input, State
 from FlightRadar24 import FlightRadar24API
 from utils import custom_icon
 
@@ -54,6 +54,15 @@ default_map_children = [
 
 
 app.layout = html.Div([
+    # The memory store reverts to the default on every page refresh
+    dcc.Store(id="memory"),
+    # The local store will take the initial data
+    # only the first time the page is loaded
+    # and keep it until it is cleared.
+    dcc.Store(id="local", storage_type="local"),
+    # Same as the local store but will lose the data
+    # when the browser/tab closes.
+    dcc.Store(id="session", storage_type="session"),
     dl.Map(
         id='map',
         center=[56, 10],
@@ -70,10 +79,12 @@ app.layout = html.Div([
 
 
 @app.callback(
-    Output('map', 'children'),
-    [Input('interval-component', 'n_intervals')]
+    [Output('map', 'children'), Output('memory', 'data')],
+    [Input('interval-component', 'n_intervals')],
+    [State('memory', 'data')]
 )
-def update_graph_live(n):
+def update_graph_live(n, previous_data):
+    print(previous_data)
     data = fetch_flight_data(airline_icao="AFR", zone_str="europe")
 
     # Assuming data is a list of dict with 'latitude', 'longitude' and 'flight' keys
@@ -90,7 +101,7 @@ def update_graph_live(n):
         ) for flight in data
     ]
 
-    return children
+    return [children, data]
 
 
 if __name__ == '__main__':
