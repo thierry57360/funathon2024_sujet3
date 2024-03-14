@@ -5,6 +5,7 @@ from dash import html
 import dash_leaflet as dl
 from dash.dependencies import Output, Input
 from FlightRadar24 import FlightRadar24API
+from utils import custom_icon
 
 
 fr_api = FlightRadar24API()
@@ -78,11 +79,15 @@ def update_graph_live(n):
     # Assuming data is a list of dict with 'latitude', 'longitude' and 'flight' keys
     # You may need to adjust this based on your actual data structure
     children = default_map_children + [
-        dl.Marker(position=[flight['latitude'], flight['longitude']], children=[
-            dl.Popup(html.Div([
-                html.H3(flight['id'])
-            ]))
-        ]) for flight in data
+        dl.Marker(
+            position=[flight['latitude'], flight['longitude']],
+            children=[
+                dl.Popup(html.Div([
+                    html.H3(flight['id'])
+                ]))
+            ],
+            icon=custom_icon
+        ) for flight in data
     ]
 
     return children
