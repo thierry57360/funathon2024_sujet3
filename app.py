@@ -84,8 +84,12 @@ app.layout = html.Div([
     [State('memory', 'data')]
 )
 def update_graph_live(n, previous_data):
-    print(previous_data)
     data = fetch_flight_data(airline_icao="AFR", zone_str="europe")
+    if previous_data is None:
+        for flight_data in data:
+            flight_data.update(rotation_angle=0)
+    else:
+        
 
     # Assuming data is a list of dict with 'latitude', 'longitude' and 'flight' keys
     # You may need to adjust this based on your actual data structure
@@ -97,7 +101,8 @@ def update_graph_live(n, previous_data):
                     html.H3(flight['id'])
                 ]))
             ],
-            icon=custom_icon
+            icon=custom_icon,
+            # rotationAngle=90,
         ) for flight in data
     ]
 
