@@ -5,7 +5,7 @@ from dash import html
 import dash_leaflet as dl
 from dash.dependencies import Output, Input, State
 from FlightRadar24 import FlightRadar24API
-from constants import custom_icon
+from utils import update_rotation_angles, get_closest_round_angle, get_custom_icon
 
 
 fr_api = FlightRadar24API()
@@ -90,7 +90,6 @@ def update_graph_live(n, previous_data):
             flight_data.update(rotation_angle=0)
     else:
         update_rotation_angles(data, previous_data)
-        
 
     # Assuming data is a list of dict with 'latitude', 'longitude' and 'flight' keys
     # You may need to adjust this based on your actual data structure
@@ -103,7 +102,7 @@ def update_graph_live(n, previous_data):
                 ]))
             ],
             icon=get_custom_icon(
-                get_closest_round_angle(fligth['rotation_angle'])
+                get_closest_round_angle(flight['rotation_angle'])
             ),
         ) for flight in data
     ]
