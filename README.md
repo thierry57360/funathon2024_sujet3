@@ -13,4 +13,7 @@
 
 ## Repository
 
-This repository contains an introductory notebook for the unofficial Flightradar24 API, see `exploration.ipynb`.
+This repository contains:
+    
+- An introductory notebook for the unofficial Flightradar24 API, see `exploration.ipynb`.
+- A Dash application that can be run with `python app.py` after installing the requirements. As is the application displays a map with all current Air France flights in Europe.
