@@ -13,13 +13,13 @@ def update_rotation_angles(data: Dict, previous_data: Dict) -> None:
     for flight_data in data:
         identifier = flight_data["id"]
         if identifier not in [data["id"] for data in previous_data]:
-            rotation_angle = 0
+            bearing = 0
         else:
-            longitude = data["longitude"]
-            latitude = data["latitude"]
-            previous_longitude = previous_data["longitude"]
-            previous_latitude = previous_data["latitude"]
-            
+            previous_flight_data = next(item for item in previous_data if item["id"] == identifier)
+            longitude = flight_data["longitude"]
+            latitude = flight_data["latitude"]
+            previous_longitude = previous_flight_data["longitude"]
+            previous_latitude = previous_flight_data["latitude"]
             bearing = bearing_from_positions(
                 longitude,
                 latitude,
@@ -27,7 +27,7 @@ def update_rotation_angles(data: Dict, previous_data: Dict) -> None:
                 previous_latitude,
             )
 
-        flight_data.update(rotation_angle=rotation_angle)
+        flight_data.update(rotation_angle=bearing)
     return
 
 
@@ -46,7 +46,7 @@ def bearing_from_positions(
         latitude (float): Latitude.
         previous_longitude (float): Previous longitude.
         previous_latitude (float): Previous latitude.
-    
+
     Returns:
         float: Bearing in degrees.
     """
