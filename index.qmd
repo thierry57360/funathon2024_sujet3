@@ -2,12 +2,12 @@
 title: "Reconstruction de l'interface utilisateur de FlightRadar24"
 lang: fr-FR
 author: 
-- name: Tom Seimandi
-  email: tom.seimandi@insee.fr
-  affiliations: 
-      - name: "[Insee](https://www.insee.fr/fr/accueil)"
 - name: Olivier Meslin
   email: olivier.meslin@insee.fr
+  affiliations: 
+      - name: "[Insee](https://www.insee.fr/fr/accueil)"
+- name: Tom Seimandi
+  email: tom.seimandi@insee.fr
   affiliations: 
       - name: "[Insee](https://www.insee.fr/fr/accueil)"
 format:
