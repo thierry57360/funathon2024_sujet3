@@ -1,0 +1,43 @@
+---
+title: "Reconstruction de l'interface utilisateur de FlightRadar24"
+lang: fr-FR
+author: 
+- name: Tom Seimandi
+  email: tom.seimandi@insee.fr
+  affiliations: 
+      - name: "[Insee](https://www.insee.fr/fr/accueil)"
+- name: Olivier Meslin
+  email: olivier.meslin@insee.fr
+  affiliations: 
+      - name: "[Insee](https://www.insee.fr/fr/accueil)"
+format:
+  html:
+    number-sections: true
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+# Introduction {.unnumbered}
+
+Texte introductif
+
+En travaillant sur ce sujet vous apprendrez à :
+
+- Faire ça
+- Faire ceci
+
+# Déroulement du sujet
+
+1. 1ère partie
+2. 2ème partie
+
+# Initialisation du projet
+
+## Récupérer le projet avec `Git` {{< fa brands git-alt >}}
+
+Pour se lancer dans le sujet, commencez par cloner le projet depuis un Terminal avec la commande `git clone https://github.com/InseeFrLab/funathon2024_sujet3.git`.
+
+## Installation les librairies nécessaires
+
+Pour progresser dans ce tutoriel, il vous faudra installer quelques librairies qui sont listées dans le fichier `requirements.txt`. Pour ce faire, depuis un Terminal, exécutez la commande `pip install -r requirements.txt`.
