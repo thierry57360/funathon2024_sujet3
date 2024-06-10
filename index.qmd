@@ -20,24 +20,48 @@ editor_options:
 
 # Introduction {.unnumbered}
 
-Texte introductif
+Flightradar24 est un service de suivi des vols qui fournit des informations en temps réel sur des milliers d'avions dans le monde entier. [Le site Internet](https://www.flightradar24.com/) propose une visualisation interactive des vols en cours à chaque instant, comportant des informations issues de plusieurs sources sur chaque vol. Des données de position sont agrégées avec des données sur les horaires et le statut des vols provenant des compagnies aériennes et des aéroports.
 
-En travaillant sur ce sujet vous apprendrez à :
+![Site Internet FlightRadar24](img/fr24.jpg)
 
-- Faire ça
-- Faire ceci
+Flightradar24 vend la plupart de ces données disponibles en temps réel, ainsi que des fichiers d'historiques de vols. Certaines données en temps réel sont toutefois disponibles en accès libre. Il est possible de récupérer ces données de manière programmatique en utilisant par exemple [cette librarie Python](https://github.com/JeanExtreme002/FlightRadarAPI).
+
+Avec ce sujet, nous vous proposons de reconstruire une interface utilisateur qui se rapproche de celle du [site FlightRadar24](https://www.flightradar24.com/) avec Python.
+
+![Reconstruction de l'interface utilisateur FlightRadar24](img/app_preview.jpg)
+
+Ainsi, ce sujet vous permettra :
+
+- De récupérer les données de FlightRadar24 avec interface de programmation Python;
+- Développement d'un site interactif avec [Dash](https://dash.plotly.com/), un framework Python réputé servant à construire des applications de visualisation de données. 
 
 # Déroulement du sujet
 
-1. 1ère partie
-2. 2ème partie
+Ce sujet comporte 4 parties :
+
+1. Dans la première partie, nous explorerons les données disponibles via une [interface de programmation](https://github.com/JeanExtreme002/FlightRadarAPI);
+2. Dans la deuxième partie, nous écrirons une première version de l'application de visualisation;
+3. Dans la troisième partie, nous raffinerons l'application;
+4. Dans une quatrième partie optionnelle, nous verrons comment déployer l'application sur le [SSP Cloud](https://datalab.sspcloud.fr/) et la rendre accessible depuis Internet.
 
 # Initialisation du projet
 
 ## Récupérer le projet avec `Git` {{< fa brands git-alt >}}
 
-Pour se lancer dans le sujet, commencez par cloner le projet depuis un Terminal avec la commande `git clone https://github.com/InseeFrLab/funathon2024_sujet3.git`.
+Pour se lancer dans le sujet, commencer par ouvrir un service [Vscode-python](https://datalab.sspcloud.fr/launcher/ide/vscode-python) (par exemple), en modifiant l'onglet *Networking* de la configuration (cocher la case "Enable a custom service port"). Dans le service, cloner le projet depuis un Terminal avec la commande
+```
+git clone https://github.com/InseeFrLab/funathon2024_sujet3.git
+```
+
+Le projet a la structure suivante :
+
+- Les fichiers `.qmd` ainsi que le fichier `_quarto.yaml` ont servi à la construction de ce site;
+- ...
+- Dans le répertoire `app` se trouve une version d'une application de visualisation. 
 
 ## Installation les librairies nécessaires
 
-Pour progresser dans ce tutoriel, il vous faudra installer quelques librairies qui sont listées dans le fichier `requirements.txt`. Pour ce faire, depuis un Terminal, exécutez la commande `pip install -r requirements.txt`.
+Pour progresser, il vous faudra installer quelques librairies qui sont listées dans le fichier `requirements.txt`. Pour ce faire, depuis un Terminal, exécutez la commande
+```
+pip install -r requirements.txt
+```
