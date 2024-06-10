@@ -2,3 +2,4 @@ FlightRadarAPI
 dash
 plotly
 dash-leaflet
+jupyter
