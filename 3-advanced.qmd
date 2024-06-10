@@ -1,0 +1,8 @@
+---
+lang: fr-FR
+title: Amélioration de l'interface utilisateur
+
+format:
+  html:
+    number-sections: true
+---

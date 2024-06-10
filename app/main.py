@@ -111,6 +111,6 @@ def update_graph_live(n, previous_data):
 
 
 if __name__ == '__main__':
-    app.run(
+    app.run_server(
         debug=True, port=5000, host='0.0.0.0'
     )

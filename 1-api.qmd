@@ -1,0 +1,113 @@
+---
+lang: fr-FR
+title: Interaction avec l'API FlightRadar24
+
+format:
+  html:
+    number-sections: true
+---
+
+::: {.callout-tip collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 1 : Se familiariser avec l'API de TravelTime
+
+1. On va pouvoir tester l'API, mais avant toute chose, prendre le temps de jeter un coup d'oeil à la documentation de l'API ([ici](https://docs.traveltime.com/api/overview/introduction)). Se rendre sur le [*playground*](https://playground.traveltime.com/routes) de l'API pour se familiariser avec son fonctionnement. Afin de vérifier que nous arrivons à communiquer avec l'API, nous allons effectuer la même requête présentée dans le playground directement dans notre console R.
+ 
+2. On initialise le client.
+
+```{python}
+#| code-fold: true
+#| code-summary: Cliquer pour voir la réponse
+#| code-overflow: scroll
+
+from FlightRadar24 import FlightRadar24API
+fr_api = FlightRadar24API()
+```
+
+3. Nombre de compagnies aériennes.
+
+```{python}
+#| code-fold: true
+#| code-summary: Cliquer pour voir la réponse
+#| code-overflow: scroll
+
+airlines = fr_api.get_airlines()
+len(airlines)
+```
+
+4. Nombre de zones.
+
+```{python}
+#| code-fold: true
+#| code-summary: Cliquer pour voir la réponse
+#| code-overflow: scroll
+
+zones = fr_api.get_zones()
+len(zones)
+```
+
+5. Vols correspondant à un appareil, une compagnies et une zone géographique.
+
+```{python}
+#| code-fold: true
+#| code-summary: Cliquer pour voir la réponse
+#| code-overflow: scroll
+
+airline_icao = "UAE"
+aircraft_type = "B77W"
+
+# You may also set a custom region, such as: bounds = "73,-12,-156,38"
+zone = fr_api.get_zones()["northamerica"]
+bounds = fr_api.get_bounds(zone)
+
+emirates_flights = fr_api.get_flights(
+    aircraft_type = aircraft_type,
+    airline = airline_icao,
+    bounds = bounds
+)
+len(emirates_flights)
+```
+
+6. Configuration du client
+
+```{python}
+#| code-fold: true
+#| code-summary: Cliquer pour voir la réponse
+#| code-overflow: scroll
+
+flight_tracker = fr_api.get_flight_tracker_config()
+flight_tracker.limit = 10
+fr_api.set_flight_tracker_config(flight_tracker)
+
+flights = fr_api.get_flights()  # Returns only 10 flights
+```
+
+7. Informations sur un vol :
+
+- latitude
+- longitude
+- id
+- icao_24bit
+- heading
+- altitude
+- ground_speed
+- squawk
+- aircraft_code
+- registration
+- time
+- origin_airport_iata
+- destination_airport_iata
+- number
+- airline_iata
+- on_ground
+- vertical_speed
+- callsign
+- airline_icao
+
+```{python}
+#| code-fold: true
+#| code-summary: Cliquer pour voir la réponse
+#| code-overflow: scroll
+
+flights[0].id
+```
+:::
