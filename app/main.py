@@ -1,51 +1,21 @@
-from typing import Optional
 import dash
 from dash import dcc
 from dash import html
 import dash_leaflet as dl
 from dash.dependencies import Output, Input, State
 from FlightRadar24 import FlightRadar24API
-from utils import update_rotation_angles, get_closest_round_angle, get_custom_icon
+from utils import (
+    update_rotation_angles,
+    get_closest_round_angle,
+    get_custom_icon,
+    fetch_flight_data
+)
 
 
-fr_api = FlightRadar24API()
-
-
-def fetch_flight_data(
-    airline_icao: Optional[str] = None,
-    aircraft_type: Optional[str] = None,
-    zone_str: Optional[str] = None
-):
-    """
-    Fetch flight data from FlightRadar24 API for
-    a given airline, aircraft type and zone.
-
-    Args:
-        airline_icao (str): ICAO code of the airline.
-        aircraft_type (str): Type of aircraft.
-        zone_str (str): Zone string.
-
-    Returns:
-        List: Flights.
-    """
-    zone = fr_api.get_zones()[zone_str]
-    bounds = fr_api.get_bounds(zone)
-
-    flights = fr_api.get_flights(
-        aircraft_type=aircraft_type,
-        airline=airline_icao,
-        bounds=bounds
-    )
-    return [
-        {
-            "latitude": flight.latitude,
-            "longitude": flight.longitude,
-            "id": flight.id,
-        } for flight in flights
-    ]
-
-
+# App initialization
 app = dash.Dash(__name__)
+# FlightRadar24API client
+fr_api = FlightRadar24API()
 
 
 default_map_children = [
@@ -84,7 +54,7 @@ app.layout = html.Div([
     [State('memory', 'data')]
 )
 def update_graph_live(n, previous_data):
-    data = fetch_flight_data(airline_icao="AFR", zone_str="europe")
+    data = fetch_flight_data(client=fr_api, airline_icao="AFR", zone_str="europe")
     if previous_data is None:
         for flight_data in data:
             flight_data.update(rotation_angle=0)
