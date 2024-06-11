@@ -66,7 +66,7 @@ Regarder les différents composants de l'application et identifier les élément
 Essayons maintenant d'implémenter une première version de l'application de visualisation des données FlightRadar24.
 
 ::: {.callout-tip collapse="false" icon=false}
-## `<i class="bi bi-book"></i>`{=html} Exercice 2 : Première application de visualisation
+## `<i class="bi bi-book"></i>`{=html} Exercice 3 : Première application de visualisation
 
 On souhaite implémenter une première application de visualisation simple, affichant une carte sur laquelle se déplacent en temps réel des points correspondant aux vols Air France en Europe. Un squelette d'application se trouve dans le répertoire `intermediate_app`, avec des éléments à compléter.
 
@@ -164,4 +164,3 @@ Vous devriez observer le résultat suivant :
 :::
 
 Dans l'étape suivante, on propose d'améliorer le rendu de l'application en changeant l'icône des marqueurs et en implémentant un calcul du cap de vol des avions en temps réel.
- 
