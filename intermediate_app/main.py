@@ -52,7 +52,7 @@ def update_graph_live(n):
         ) for flight in data
     ]
 
-    return children
+    return [children]
 
 
 if __name__ == '__main__':

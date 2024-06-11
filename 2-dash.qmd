@@ -163,4 +163,5 @@ Vous devriez observer le résultat suivant :
 
 :::
 
-Dans l'étape suivante, on propose d'améliorer le rendu de l'application en 
+Dans l'étape suivante, on propose d'améliorer le rendu de l'application en changeant l'icône des marqueurs et en implémentant un calcul du cap de vol des avions en temps réel.
+ 
