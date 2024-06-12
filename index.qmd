@@ -56,7 +56,7 @@ Ce sujet comporte 5 parties:
 Pour se lancer dans le sujet, commencer par ouvrir un service [Vscode-python](https://datalab.sspcloud.fr/launcher/ide/vscode-python). Pour éviter les problèmes plus tard, il faut impérativement modifier deux éléments de configuration du service:
 
 - Dans l'onglet *Networking* de la configuration, cocher la case "Enable a custom service port";
-- Dans l'onglet *Kubernetes* de la configuration, changer le rôle de `admin`. 
+- Dans l'onglet *Kubernetes* de la configuration, changer le rôle en `admin`. 
 :::
 
 Dans le service créé, cloner le projet depuis un Terminal avec la commande
