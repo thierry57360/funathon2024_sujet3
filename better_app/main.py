@@ -54,15 +54,16 @@ app.layout = html.Div([
     [State('memory', 'data')]
 )
 def update_graph_live(n, previous_data):
+    # Retrieve a list of flight dictionaries with 'latitude', 'longitude' and 'id' keys
     data = fetch_flight_data(client=fr_api, airline_icao="AFR", zone_str="europe")
+    # Add a rotation_angle key to dictionaries
     if previous_data is None:
         for flight_data in data:
             flight_data.update(rotation_angle=0)
     else:
         update_rotation_angles(data, previous_data)
 
-    # Assuming data is a list of dict with 'latitude', 'longitude' and 'flight' keys
-    # You may need to adjust this based on your actual data structure
+    # Update map children by adding markers to the default tiles layer
     children = default_map_children + [
         dl.Marker(
             position=[flight['latitude'], flight['longitude']],
