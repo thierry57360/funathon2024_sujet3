@@ -40,6 +40,8 @@ website:
         href: 4-final.qmd
       - text: "Déploiement"
         href: 5-deployment.qmd
+      - text: "Application démo"
+        href: flightradar-ui-demo.lab.sspcloud.fr
 
 format:
   html:
