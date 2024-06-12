@@ -4,3 +4,4 @@ plotly
 dash-leaflet
 jupyter
 jupyter-cache
+numpy
