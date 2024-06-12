@@ -41,7 +41,12 @@ airlines = fr_api.get_airlines()
 print(f"Il y a {len(airlines)} compagnies aériennes différentes dont on peut récupérer les vols.")
 ```
 
-3. Compter le nombre de zones géographiques utilisables et en afficher une selection. Indice: la méthode `FlightRadar24API.get_zones` retourne un dictionnaire contenant une clé pour chaque zone.
+3. Compter le nombre de zones géographiques utilisables et en afficher une selection.
+
+<details>
+<summary>Cliquer pour voir un indice</summary>
+La méthode `FlightRadar24API.get_zones` retourne un dictionnaire contenant une clé pour chaque zone.
+</details>
 
 ```{python}
 #| code-fold: true
@@ -53,7 +58,12 @@ zones = list(zones)
 print(f"Il y a {len(zones)} zones différentes, dont les zones '{zones[0]}', '{zones[1]}', '{zones[2]}', etc.")
 ```
 
-4. On souhaite maintenant récupérer les vols de Boeing 77W en activité en Europe de la compagnie aérienne Air France. Utiliser la méthode `FlightRadar24API.get_flights` pour donner un compte de ces vols. La chaîne de caractères qui représente Air France est `"AFR"` et celle qui représente le type d'aéronef est `"B77W"`. Indice: la méthode à utiliser prend un argument `bounds`, que la méthode `FlightRadar24API.get_bounds` permet de récupérer à partir d'une zone géographique.
+4. On souhaite maintenant récupérer les vols de Boeing 77W en activité en Europe de la compagnie aérienne Air France. Utiliser la méthode `FlightRadar24API.get_flights` pour donner un compte de ces vols. La chaîne de caractères qui représente Air France est `"AFR"` et celle qui représente le type d'aéronef est `"B77W"`.
+
+<details>
+<summary>Cliquer pour voir un indice</summary>
+La méthode à utiliser prend un argument `bounds`, que la méthode `FlightRadar24API.get_bounds` permet de récupérer à partir d'une zone géographique.
+</details>
 
 ```{python}
 #| code-fold: true
