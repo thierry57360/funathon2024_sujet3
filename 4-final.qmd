@@ -15,9 +15,9 @@ Dans cette partie on propose deux améliorations à l'interface utilisateur qui 
 ::: {.callout-tip collapse="false" icon=false}
 ## `<i class="bi bi-book"></i>`{=html} Exercice 5: Informations supplémentaires sur chaque vol
 
-Le code pour cet exercice se trouve dans le répertoire `final_app`. Ce code correspond à l'application qui devrait être obtenue à la fin de l'exercice précédent. Pour afficher des informations supplémentaires sur chaque vol, il faut procéder en deux étapes.
+Le code pour cet exercice se trouve dans le répertoire `even_better_app`. Ce code correspond à l'application qui devrait être obtenue à la fin de l'exercice précédent. Pour afficher des informations supplémentaires sur chaque vol, il faut procéder en deux étapes.
 
-1. Dans le fichier `final_app/utils.py`, modifier la fonction `fetch_flight_data` pour inclure davantage d'information dans les dictionnaires de vols.
+1. Dans le fichier `even_better_app/utils.py`, modifier la fonction `fetch_flight_data` pour inclure davantage d'information dans les dictionnaires de vols.
 
 ```{python}
 #| code-fold: true
@@ -65,7 +65,7 @@ def fetch_flight_data(
     ]
 ```
 
-2. Pour afficher plus d'informations dans l'application, il faut modifier le contenu de la fonction `update_graph_live` dans `final_app/main.py`, et plus spécifiquement l'argument `children` du constructeur `dl.Marker`. Implémenter ce changement.
+2. Pour afficher plus d'informations dans l'application, il faut modifier le contenu de la fonction `update_graph_live` dans `even_better_app/main.py`, et plus spécifiquement l'argument `children` du constructeur `dl.Marker`. Implémenter ce changement.
 
 ```{python}
 #| code-fold: true
@@ -106,16 +106,98 @@ def update_graph_live(n, previous_data):
 
 3. Exécuter l'application en lançant depuis la racine du projet dans un Terminal la commande
 ```
-python final_app/main.py
+python even_better_app/main.py
 ```
 
 Vous devriez obtenir davantage d'informations sur un vol en cliquant dessus, en fonction des changements que vous avez effectués.
 
 :::
 
+Passons à l'exercice suivant.
 
 ::: {.callout-tip collapse="false" icon=false}
 ## `<i class="bi bi-book"></i>`{=html} Exercice 6: Ajout d'un filtre sur la compagnie aérienne
 
+Dans cette exercice, nous allons ajouter à l'interface utilisateur un filtre permettant de choisir la compagnie aérienne dont les vols seront affichés. Le code pour cet exercice (à modifier encore une fois) se trouve dans le répertoire `final_app`.
+
+1. Nous souhaitons d'abord modifier la mise en page de l'application. Modifier `final_app/main.py` de manière à intégrer dans `app.layout` une zone incluant un [menu déroulant](https://dash.plotly.com/dash-core-components/dropdown). Ce menu déroulant devra proposer plusieurs options de compagnie aériennes. Pour faciliter la suite, afficher le nom complet de la compagnie dans le menu déroulant mais faire en sorte que l'attribut `value` soit un code ICAO.
+
+```{python}
+#| code-fold: true
+#| code-summary: Cliquer pour voir la réponse
+#| code-overflow: scroll
+#| eval: false
+app.layout = html.Div([
+    # The memory store reverts to the default on every page refresh
+    dcc.Store(id="memory"),
+    # The local store will take the initial data
+    # only the first time the page is loaded
+    # and keep it until it is cleared.
+    dcc.Store(id="local", storage_type="local"),
+    # Same as the local store but will lose the data
+    # when the browser/tab closes.
+    dcc.Store(id="session", storage_type="session"),
+    html.Div([
+        html.H3('Choix de la compagnie aérienne'),
+        dcc.Dropdown(
+            id='dropdown',
+            options=[
+                {'label': 'Air France', 'value': 'AFR'},
+                {'label': 'Iberia', 'value': 'IBE'},
+            ],
+            value='AFR'
+        )
+    ], style={
+        'width': '250px',
+        'background': '#f8f9fa',
+        'padding': '10px',
+        'position': 'fixed',
+        'top': 0,
+        'left': 0,
+        'height': '100vh'
+    }),
+    html.Div([
+        dl.Map(
+            id='map',
+            center=[56, 10],
+            zoom=6,
+            style={'width': '100%', 'height': '800px'},
+            children=default_map_children
+        )
+    ], style={'marginLeft': '270px', 'padding': '10px'}),
+    dcc.Interval(
+        id="interval-component",
+        interval=2*1000,  # in milliseconds
+        n_intervals=0
+    )
+])
+```
+
+2. Toujours dans `final_app/main.py`, modifier le décorateur callback de la fonction `update_graph_live` pour ajouter un `Input` correspondant à la compagnie sélectionnée dans le menu déroulant. Modifier également l'appel de la fonction `fetch_flight_data` pour que les données de la bonne compagnie soient récupérées.
+
+```{python}
+#| code-fold: true
+#| code-summary: Cliquer pour voir la réponse
+#| code-overflow: scroll
+#| eval: false
+@app.callback(
+    [Output('map', 'children'), Output('memory', 'data')],
+    [Input('interval-component', 'n_intervals'), Input('dropdown', 'value')],
+    [State('memory', 'data')]
+)
+def update_graph_live(n, airline_icao, previous_data):
+    # Retrieve a list of flight dictionaries with 'latitude', 'longitude', 'id'
+    # and additional keys
+    data = fetch_flight_data(client=fr_api, airline_icao=airline_icao, zone_str="europe")
+```
+
+3. Exécuter l'application en lançant depuis la racine du projet dans un Terminal la commande
+```
+python final_app/main.py
+```
+
+La même application se trouve en principe dans le répertoire `correction`. Et voilà ! Le prototype est terminé ! 
 
 :::
+
+Dans la section suivante, nous allons voir comment déployer notre application Dash sur le SSP Cloud et la rendre accessible depuis Internet.

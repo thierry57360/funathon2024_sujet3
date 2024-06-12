@@ -33,13 +33,34 @@ app.layout = html.Div([
     # Same as the local store but will lose the data
     # when the browser/tab closes.
     dcc.Store(id="session", storage_type="session"),
-    dl.Map(
-        id='map',
-        center=[56, 10],
-        zoom=6,
-        style={'width': '100%', 'height': '800px'},
-        children=default_map_children
-    ),
+    html.Div([
+        html.H3('Choix de la compagnie aérienne'),
+        dcc.Dropdown(
+            id='dropdown',
+            options=[
+                {'label': 'Air France', 'value': 'AFR'},
+                {'label': 'Iberia', 'value': 'IBE'},
+            ],
+            value='AFR'
+        )
+    ], style={
+        'width': '250px',
+        'background': '#f8f9fa',
+        'padding': '10px',
+        'position': 'fixed',
+        'top': 0,
+        'left': 0,
+        'height': '100vh'
+    }),
+    html.Div([
+        dl.Map(
+            id='map',
+            center=[56, 10],
+            zoom=6,
+            style={'width': '100%', 'height': '800px'},
+            children=default_map_children
+        )
+    ], style={'marginLeft': '270px', 'padding': '10px'}),
     dcc.Interval(
         id="interval-component",
         interval=2*1000,  # in milliseconds
@@ -50,13 +71,13 @@ app.layout = html.Div([
 
 @app.callback(
     [Output('map', 'children'), Output('memory', 'data')],
-    [Input('interval-component', 'n_intervals')],
+    [Input('interval-component', 'n_intervals'), Input('dropdown', 'value')],
     [State('memory', 'data')]
 )
-def update_graph_live(n, previous_data):
-    # Retrieve a list of flight dictionaries with 'latitude', 'longitude', 'id' 
+def update_graph_live(n, airline_icao, previous_data):
+    # Retrieve a list of flight dictionaries with 'latitude', 'longitude', 'id'
     # and additional keys
-    data = fetch_flight_data(client=fr_api, airline_icao="AFR", zone_str="europe")
+    data = fetch_flight_data(client=fr_api, airline_icao=airline_icao, zone_str="europe")
     # Add a rotation_angle key to dictionaries
     if previous_data is None:
         for flight_data in data:
