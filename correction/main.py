@@ -54,7 +54,8 @@ app.layout = html.Div([
     [State('memory', 'data')]
 )
 def update_graph_live(n, previous_data):
-    # Retrieve a list of flight dictionaries with 'latitude', 'longitude' and 'id' keys
+    # Retrieve a list of flight dictionaries with 'latitude', 'longitude', 'id' 
+    # and additional keys
     data = fetch_flight_data(client=fr_api, airline_icao="AFR", zone_str="europe")
     # Add a rotation_angle key to dictionaries
     if previous_data is None:
@@ -67,10 +68,17 @@ def update_graph_live(n, previous_data):
     children = default_map_children + [
         dl.Marker(
             position=[flight['latitude'], flight['longitude']],
-            # TO MODIFY
             children=[
                 dl.Popup(html.Div([
-                    html.H3(flight['id'])
+                    dcc.Markdown(f'''
+                        **Identifiant du vol**: {flight['id']}.
+
+                        **Aérport d'origine**: {flight['origin_airport_iata']}.
+
+                        **Aéroport de destination**: {flight['destination_airport_iata']}.
+
+                        **Vitesse au sol**: {flight['ground_speed']} noeuds.
+                    ''')
                 ]))
             ],
             icon=get_custom_icon(
