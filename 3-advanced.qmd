@@ -12,7 +12,7 @@ Dans cette partie, on propose un exercice intéressant pour appréhender une fon
 Comme nous avons pu le voir dans la première partie de ce sujet, l'API FlightRadar permet de récupérer pour chaque vol une variable `heading` qui contient le cap de vol en degrés. Nous pourrions utiliser cette variable pour donner une orientation aux icônes des marqueurs sur la carte, mais nous allons plutôt essayer de la recalculer au vol. D'ailleurs, ce n'est pas proposé dans l'exercice mais vous pouvez comparer les résultats de ce calcul avec la donnée brute disponible !
 
 ::: {.callout-tip collapse="false" icon=false}
-## `<i class="bi bi-book"></i>`{=html} Exercice 4 : Calcul en direct du cap des vols
+## `<i class="bi bi-book"></i>`{=html} Exercice 4: Calcul en direct du cap des vols
 
 Cet exercice est à réaliser dans le répertoire `better_app`, qui contient encore une fois deux fichiers `main.py` et `utils.py`.
 

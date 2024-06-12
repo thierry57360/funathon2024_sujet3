@@ -10,7 +10,7 @@ format:
 Dans la première partie de ce sujet, nous avons vu comment utiliser une API Python pour récupérer des données de vols en temps réel. Dans cette deuxième partie, nous allons utiliser le framework Python [Dash](https://dash.plotly.com/) qui permet de construire des applications de visualisation de données rapidement et avec peu de code. Commençons par prendre en main le framework à partir de la [documentation](https://dash.plotly.com/minimal-app).
 
 ::: {.callout-tip collapse="false" icon=false}
-## `<i class="bi bi-book"></i>`{=html} Exercice 2 : Prise en main de Dash
+## `<i class="bi bi-book"></i>`{=html} Exercice 2: Prise en main de Dash
 
 Le script suivant permet de faire tourner une application Dash minimale à partir des données contenues dans [ce fichier `.csv`](https://raw.githubusercontent.com/plotly/datasets/master/gapminder_unfiltered.csv). Il est disponible au chemin `minimal_app/main.py` du dépôt du sujet. Pour exécuter l'application, lancer depuis la racine du projet dans un Terminal la commande
 ```
@@ -66,7 +66,7 @@ Regarder les différents composants de l'application et identifier les élément
 Essayons maintenant d'implémenter une première version de l'application de visualisation des données FlightRadar24.
 
 ::: {.callout-tip collapse="false" icon=false}
-## `<i class="bi bi-book"></i>`{=html} Exercice 3 : Première application de visualisation
+## `<i class="bi bi-book"></i>`{=html} Exercice 3: Première application de visualisation
 
 On souhaite implémenter une première application de visualisation simple, affichant une carte sur laquelle se déplacent en temps réel des points correspondant aux vols Air France en Europe. Un squelette d'application se trouve dans le répertoire `intermediate_app`, avec des éléments à compléter.
 
@@ -157,7 +157,7 @@ children = default_map_children + [
 python intermediate_app/main.py
 ```
 
-Vous devriez observer le résultat suivant :
+Vous devriez observer le résultat suivant:
 
 ![Première application Dash de visualisation des vols](img/intermediate_app.jpg)
 
