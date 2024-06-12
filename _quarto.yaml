@@ -41,7 +41,7 @@ website:
       - text: "Déploiement"
         href: 5-deployment.qmd
       - text: "Application démo"
-        href: "flightradar-ui-demo.lab.sspcloud.fr"
+        href: "https://flightradar-ui-demo.lab.sspcloud.fr"
 
 format:
   html:
