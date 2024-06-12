@@ -26,7 +26,7 @@ Flightradar24 est un service de suivi des vols qui fournit des informations en t
 
 Flightradar24 vend la plupart de ces données disponibles en temps réel, ainsi que des fichiers d'historiques de vols. Certaines données en temps réel sont toutefois disponibles en accès libre. Il est possible de récupérer ces données de manière programmatique en utilisant par exemple [cette librarie Python](https://github.com/JeanExtreme002/FlightRadarAPI).
 
-Avec ce sujet, nous vous proposons de reconstruire une interface utilisateur qui se rapproche de celle du [site FlightRadar24](https://www.flightradar24.com/) avec Python.
+Avec ce sujet, nous vous proposons de reconstruire une interface utilisateur qui se rapproche de celle du [site FlightRadar24](https://www.flightradar24.com/) avec Python. Une version démo de l'application est accessible via le bandeau en haut de cette page.
 
 ![Reconstruction de l'interface utilisateur FlightRadar24](img/app_preview.jpg)
 
