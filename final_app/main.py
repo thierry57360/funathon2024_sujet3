@@ -70,6 +70,7 @@ def update_graph_live(n, previous_data):
     # Update map children by adding markers to the default tiles layer
     children = default_map_children + [
         dl.Marker(
+            id=flight['id'],
             position=[flight['latitude'], flight['longitude']],
             children=[
                 dl.Popup(html.Div([

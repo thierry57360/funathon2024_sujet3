@@ -142,6 +142,7 @@ Mettre à jour la liste renvoyée par la fonction `update_graph_live` pour que l
 #| eval: false
 children = default_map_children + [
     dl.Marker(
+        id=flight['id'],
         position=[flight['latitude'], flight['longitude']],
         children=[
             dl.Popup(html.Div([
