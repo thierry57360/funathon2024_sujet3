@@ -36,6 +36,10 @@ website:
         href: 2-dash.qmd
       - text: "Amélioration de l'UI"
         href: 3-advanced.qmd
+      - text: "Encore des améliorations"
+        href: 4-final.qmd
+      - text: "Déploiement"
+        href: 5-deployment.qmd
 
 format:
   html:

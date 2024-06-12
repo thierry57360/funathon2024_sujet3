@@ -184,7 +184,7 @@ def get_closest_round_angle(angle: float) -> int:
         return closest_angle
 ```
 
-4. 4. Exécuter l'application en lançant depuis la racine du projet dans un Terminal la commande
+4. Exécuter l'application en lançant depuis la racine du projet dans un Terminal la commande
 ```
 python better_app/main.py
 ```

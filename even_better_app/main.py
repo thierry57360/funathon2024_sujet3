@@ -33,7 +33,6 @@ app.layout = html.Div([
     # Same as the local store but will lose the data
     # when the browser/tab closes.
     dcc.Store(id="session", storage_type="session"),
-    # TO MODIFY
     dl.Map(
         id='map',
         center=[56, 10],
@@ -49,16 +48,13 @@ app.layout = html.Div([
 ])
 
 
-# TO MODIFY
 @app.callback(
     [Output('map', 'children'), Output('memory', 'data')],
     [Input('interval-component', 'n_intervals')],
     [State('memory', 'data')]
 )
 def update_graph_live(n, previous_data):
-    # Retrieve a list of flight dictionaries with 'latitude', 'longitude', 'id'
-    # and additional keys
-    # TO MODIFY
+    # Retrieve a list of flight dictionaries with 'latitude', 'longitude' and 'id' keys
     data = fetch_flight_data(client=fr_api, airline_icao="AFR", zone_str="europe")
     # Add a rotation_angle key to dictionaries
     if previous_data is None:
@@ -71,17 +67,10 @@ def update_graph_live(n, previous_data):
     children = default_map_children + [
         dl.Marker(
             position=[flight['latitude'], flight['longitude']],
+            # TO MODIFY
             children=[
                 dl.Popup(html.Div([
-                    dcc.Markdown(f'''
-                        **Identifiant du vol**: {flight['id']}.
-
-                        **Aérport d'origine**: {flight['origin_airport_iata']}.
-
-                        **Aéroport de destination**: {flight['destination_airport_iata']}.
-
-                        **Vitesse au sol**: {flight['ground_speed']} noeuds.
-                    ''')
+                    html.H3(flight['id'])
                 ]))
             ],
             icon=get_custom_icon(

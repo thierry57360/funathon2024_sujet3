@@ -1,0 +1,10 @@
+---
+lang: fr-FR
+title: Déploiement de l'application
+
+format:
+  html:
+    number-sections: true
+---
+
+Dans cette partie on propose de déployer l'application sur le SSP Cloud et de la rendre accessible depuis Internet.
