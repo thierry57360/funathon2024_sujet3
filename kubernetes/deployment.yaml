@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flightradar-ui
+spec:
+  selector:
+    matchLabels:
+      app: flightradar-ui
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flightradar-ui
+    spec:
+      containers:
+        - name: dash-app
+          image: inseefrlab/funathon2024-sujet3:main
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "1000m"
+            limits:
+              memory: "3Gi"
+              cpu: "2000m"

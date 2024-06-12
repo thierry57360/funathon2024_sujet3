@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flightradar-ui
+spec:
+  type: LoadBalancer
+  selector:
+    app: flightradar-ui
+  ports:
+    - name: dash-port
+      protocol: TCP
+      port: 80
+      targetPort: 5000
