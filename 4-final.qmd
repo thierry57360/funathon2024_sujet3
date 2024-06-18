@@ -17,7 +17,7 @@ Dans cette partie on propose deux améliorations à l'interface utilisateur qui 
 
 Le code pour cet exercice se trouve dans le répertoire `even_better_app`. Ce code correspond à l'application qui devrait être obtenue à la fin de l'exercice précédent. Pour afficher des informations supplémentaires sur chaque vol, il faut procéder en deux étapes.
 
-1. Dans le fichier `even_better_app/utils.py`, modifier la fonction `fetch_flight_data` pour inclure davantage d'information dans les dictionnaires de vols.
+1. Dans le fichier `even_better_app/utils.py`, modifier la fonction `fetch_flight_data` pour inclure les information dans les dictionnaires de vols: code IATA des aéroports de départ et d'arrivée, vitesse au sol et type d'avion. __Attention: il ne faut pas utiliser la fonction `get_flight_details()` car vous atteindriez immédiatement la limite de consultation de l'API Flightradar24.__
 
 ```{python}
 #| code-fold: true
@@ -55,9 +55,10 @@ def fetch_flight_data(
     )
     return [
         {
+            "id": flight.id,
+            "aircraft_code": flight.aircraft_code,
             "latitude": flight.latitude,
             "longitude": flight.longitude,
-            "id": flight.id,
             "origin_airport_iata": flight.origin_airport_iata,
             "destination_airport_iata": flight.destination_airport_iata,
             "ground_speed": flight.ground_speed,
@@ -65,7 +66,7 @@ def fetch_flight_data(
     ]
 ```
 
-2. Pour afficher plus d'informations dans l'application, il faut modifier le contenu de la fonction `update_graph_live` dans `even_better_app/main.py`, et plus spécifiquement l'argument `children` du constructeur `dl.Marker`. Implémenter ce changement.
+2. Pour afficher plus d'informations dans l'application, il faut modifier le contenu de la fonction `update_graph_live` dans `even_better_app/main.py`, et plus spécifiquement l'argument `children` du constructeur `dl.Marker`. Ajouter les codes des aéroports de départ et d'arrivée et la vitesse au sol.
 
 ```{python}
 #| code-fold: true
@@ -87,7 +88,7 @@ def update_graph_live(n, previous_data):
                     dcc.Markdown(f'''
                         **Identifiant du vol**: {flight['id']}.
 
-                        **Aérport d'origine**: {flight['origin_airport_iata']}.
+                        **Aéroport d'origine**: {flight['origin_airport_iata']}.
 
                         **Aéroport de destination**: {flight['destination_airport_iata']}.
 
@@ -173,7 +174,7 @@ app.layout = html.Div([
 ])
 ```
 
-2. Toujours dans `final_app/main.py`, modifier le décorateur callback de la fonction `update_graph_live` pour ajouter un `Input` correspondant à la compagnie sélectionnée dans le menu déroulant. Modifier également l'appel de la fonction `fetch_flight_data` pour que les données de la bonne compagnie soient récupérées.
+2. Toujours dans `final_app/main.py`, modifier le décorateur callback de la fonction `update_graph_live` pour ajouter un `Input` correspondant à la compagnie sélectionnée dans le menu déroulant. Pour vous aider, vous pouvez relire [cette page](https://dash.plotly.com/basic-callbacks), notamment le point 1.c. Modifier également l'appel de la fonction `fetch_flight_data` pour que les données de la bonne compagnie soient récupérées.
 
 ```{python}
 #| code-fold: true
