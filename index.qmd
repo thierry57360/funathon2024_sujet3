@@ -32,17 +32,17 @@ Avec ce sujet, nous vous proposons de reconstruire une interface utilisateur qui
 
 L'objet de ce sujet est de reconstruire pas à pas l'interface utilisateur de FlightRadar24. Ce faisant, ce sujet vous apprendra trois choses:
 
--   Récupérer les données de FlightRadar24 avec interface de programmation Python;
--   Développer un site interactif avec [Dash](https://dash.plotly.com/), un framework Python réputé servant à construire des applications de visualisation de données;
+-   Récupérer les données de FlightRadar24 avec interface de programmation Python ;
+-   Développer un site interactif avec [Dash](https://dash.plotly.com/), un framework Python réputé servant à construire des applications de visualisation de données ;
 -   Déployer facilement une application de visualisation dans un environnement Cloud.
 
 # Déroulement du sujet
 
-Ce sujet comporte 5 parties listées dans le bandeau en haut de la page:
+Ce sujet comporte 5 parties listées dans le bandeau en haut de la page :
 
--   Dans la première partie, nous explorerons les données disponibles via une [interface de programmation](https://github.com/JeanExtreme002/FlightRadarAPI);
--   Dans la deuxième partie, nous écrirons une première version de l'application de visualisation;
--   Dans les troisième et quatrième parties, nous raffinerons l'application;
+-   Dans la première partie, nous explorerons les données disponibles via une [interface de programmation](https://github.com/JeanExtreme002/FlightRadarAPI) ;
+-   Dans la deuxième partie, nous écrirons une première version de l'application de visualisation ;
+-   Dans les troisième et quatrième parties, nous raffinerons l'application ;
 -   Dans la cinquième partie, nous verrons comment déployer l'application sur le [SSP Cloud](https://datalab.sspcloud.fr/) et la rendre accessible depuis Internet.
 
 # Initialisation du projet
@@ -52,9 +52,9 @@ Ce sujet comporte 5 parties listées dans le bandeau en haut de la page:
 ::: {.callout-note appearance="simple"}
 ## Attention
 
-Pour se lancer dans le sujet, commencer par ouvrir un service [Vscode-python](https://datalab.sspcloud.fr/launcher/ide/vscode-python). Pour éviter les problèmes plus tard, il faut impérativement modifier deux éléments de configuration du service:
+Pour se lancer dans le sujet, commencer par ouvrir un service [Vscode-python](https://datalab.sspcloud.fr/launcher/ide/vscode-python). Pour éviter les problèmes plus tard, il faut impérativement modifier deux éléments de configuration du service :
 
--   Dans l'onglet *Networking* de la configuration, cocher la case "Enable a custom service port";
+-   Dans l'onglet *Networking* de la configuration, cocher la case "Enable a custom service port" ;
 -   Dans l'onglet *Kubernetes* de la configuration, changer le rôle en `admin`.
 :::
 
@@ -64,12 +64,12 @@ Dans le service créé, cloner le projet depuis un Terminal avec la commande
 git clone https://github.com/InseeFrLab/funathon2024_sujet3.git
 ```
 
-Le projet a la structure suivante:
+Le projet a la structure suivante :
 
--   Les fichiers `.qmd` ainsi que le fichier `_quarto.yaml` ont servi à la construction de ce site;
--   Le fichier `requirements.txt` possède toutes les dépendances Python nécessaires pour le sujet;
--   Plusieurs versions de l'application, à différents stades du développement, et à modifier lors des exercices sont situées dans les répertoire `intermediate_app`, `better_app`, `even_better_app` et `final_app`;\
--   Le corrigé (version finale) de l'application se trouve dans le répertoire `correction`;
+-   Les fichiers `.qmd` ainsi que le fichier `_quarto.yaml` ont servi à la construction de ce site ;
+-   Le fichier `requirements.txt` possède toutes les dépendances Python nécessaires pour le sujet ;
+-   Plusieurs versions de l'application, à différents stades du développement, et à modifier lors des exercices sont situées dans les répertoire `intermediate_app`, `better_app`, `even_better_app` et `final_app` ;\
+-   Le corrigé (version finale) de l'application se trouve dans le répertoire `correction` ;
 -   Le fichier `Dockerfile` et les fichiers du répertoire `kubernetes` serviront au déploiement de l'application.
 
 ## Installation des librairies nécessaires
