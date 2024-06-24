@@ -18,6 +18,27 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{=html}
+<table>
+  <thead>
+    <tr>
+      <th>Niveau technique</th>
+      <th>Enjeux</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="level-button level-intermediaire">Intermédiaire</span></td>
+      <td>Chercher à faire les exercices et ne regarder les aides que si nécessaire. <b>Ne pas se préoccuper de la fin du tutoriel (l'ouverture vers la mise en production)</b>.</td>
+    </tr>
+    <tr>
+      <td><span class="level-button level-expert">Expert</span></td>
+      <td>Faire les premiers exercices en autonomie. <b>Ajouter des éléments supplémentaires à l'application et aller jusqu'à la partie mise en production</b>.</td>
+    </tr>
+  </tbody>
+</table>
+```
+
 # Introduction {.unnumbered}
 
 Flightradar24 est un service de suivi des vols qui fournit des informations en temps réel sur des milliers d'avions dans le monde entier. [Le site Internet](https://www.flightradar24.com/) propose une visualisation interactive des vols en cours à chaque instant, comportant des informations issues de plusieurs sources sur chaque vol. Des données de position sont agrégées avec des données sur les horaires et le statut des vols provenant des compagnies aériennes et des aéroports.

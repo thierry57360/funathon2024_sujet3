@@ -46,7 +46,7 @@ website:
 format:
   html:
     theme:
-      light: cosmo
+      light: [cosmo, custom.scss]
     toc: true
     reference-location: margin
     code-copy: true
