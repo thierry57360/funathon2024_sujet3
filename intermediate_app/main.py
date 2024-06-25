@@ -35,7 +35,10 @@ app.layout = html.Div([
     )
 ])
 
-
+@app.callback(
+    Output('map', 'children'),
+    Input('interval-component', 'n_intervals'),
+)
 # TO MODIFY: Add callback decorator
 def update_graph_live(n):
     # Retrieve a list of flight dictionaries with 'latitude', 'longitude' and 'id' keys

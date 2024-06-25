@@ -77,6 +77,8 @@ def update_graph_live(n, previous_data):
                     dcc.Markdown(f'''
                         **Identifiant du vol**: {flight['id']}.
 
+                         **Inuméro du vol**: {flight['number']}.
+
                         **Aérport d'origine**: {flight['origin_airport_iata']}.
 
                         **Aéroport de destination**: {flight['destination_airport_iata']}.
