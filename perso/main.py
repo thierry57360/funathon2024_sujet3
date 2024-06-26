@@ -25,6 +25,7 @@ default_map_children = [
     dl.TileLayer()
 ]
 
+
 # airlines list
 zones = fr_api.get_airlines()
 icao_list = [''] + [item['ICAO'] for item in zones] 
