@@ -1,0 +1,12 @@
+.dropdown-container {
+    width: 25%;
+    display: inline-block;
+  }
+  
+  .right-align {
+    float: right;
+  }
+  
+  .row {
+    text-align: right;
+  }

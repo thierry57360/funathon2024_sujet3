@@ -67,7 +67,7 @@ def update_rotation_angles(data: Dict, previous_data: Dict) -> None:
             previous_longitude = previous_flight_data["longitude"]
             previous_latitude = previous_flight_data["latitude"]
 
-            # pas de changement 
+            # pas de changement
             if (longitude == previous_longitude) & (latitude == previous_latitude):
                 bearing = previous_flight_data["rotation_angle"]
             else:
